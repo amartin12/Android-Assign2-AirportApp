@@ -70,30 +70,30 @@ public class AirportHandler {
                 Log.d("DEGUB switch","In case 2");
                 break;
 
-//            case "3":
-//                airDetailObj = airPortArrObj.getJSONObject(3);
-//
-//                break;
-//
-//            case "4":
-//                airDetailObj = airPortArrObj.getJSONObject(4);
-//
-//                break;
-//
-//            case "5":
-//                airDetailObj = airPortArrObj.getJSONObject(5);
-//
-//                break;
-//
-//            case "6":
-//                airDetailObj = airPortArrObj.getJSONObject(6);
-//
-//                break;
-//
-//            case "7":
-//                airDetailObj = airPortArrObj.getJSONObject(7);
-//
-//                break;
+            case "3":
+                airDetailObj = airPortArrObj.getJSONObject(3);
+
+                break;
+
+            case "4":
+                airDetailObj = airPortArrObj.getJSONObject(4);
+
+                break;
+
+            case "5":
+                airDetailObj = airPortArrObj.getJSONObject(5);
+
+                break;
+
+            case "6":
+                airDetailObj = airPortArrObj.getJSONObject(6);
+
+                break;
+
+            case "7":
+                airDetailObj = airPortArrObj.getJSONObject(7);
+
+                break;
             default:
 
                 System.out.println("DEBUG: IN default of switch ");

@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     boolean userPick = false;
 
 
-  private String url01 = "https://tsa-wait-times.p.rapidapi.com/airports/test?APIKEY=test"; //     "https://tsa-wait-times.p.rapidapi.com/";   //"https://numbersapi.p.rapidapi.com/";
+  private String url01 = "https://tsa-wait-times.p.rapidapi.com/airports/test?APIKEY=test";    //"https://numbersapi.p.rapidapi.com/";
   private String url02 =   "test?APIKEY=test";
 
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_share) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, "Hi there");
+            intent.putExtra(Intent.EXTRA_TEXT, "Here is the airport");
             if (provider != null) {
                 provider.setShareIntent(intent);
             } else

@@ -15,9 +15,7 @@
         <activity
             android:name=".Details_Activity"
             android:label="@string/waitTimeDetails"
-            android:theme="@style/AppTheme.NoActionBar">
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity" </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/airportSelection"
