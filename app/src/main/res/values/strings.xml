@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Assign02TSAWaitTime</string>
+    <string name="action_settings">Settings</string>
+    <string name="welcome_to_tsa_wait_time">Welcome to TSA Wait Time</string>
+    <string name="enter">Enter</string>
+    <string name="please_select_your_airport_below">Please Select your airport below.</string>
+    <string name="details_will_display_here">DETAILS will display here</string>
+    <string name="splash_screen_airplane_image">splash screen airplane image</string>
+    <string name="go">Go</string>
+    <string name="waitTimeDetails">Wait Time Details</string>
+    <string name="airportSelection">Airport Selection</string>
+    <string name="action_share">Share</string>
+</resources>
