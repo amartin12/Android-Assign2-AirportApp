@@ -34,15 +34,43 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
+
+import android.util.Log;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
     AirportHandler airportHandler = new AirportHandler();
     ShareActionProvider provider;
     boolean userPick = false;
+    String item = "";
 
 
-  private String url01 = "https://tsa-wait-times.p.rapidapi.com/airports/test?APIKEY=test";    //"https://numbersapi.p.rapidapi.com/";
-  private String url02 =   "test?APIKEY=test";
+    private String url01 = "https://tsa-wait-times.p.rapidapi.com/airports/test?APIKEY=test"; //     "https://tsa-wait-times.p.rapidapi.com/";   //"https://numbersapi.p.rapidapi.com/";
+    private String url02 =   "test?APIKEY=test";
 
 
 
@@ -68,9 +96,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (userPick) {
-                    final String item = (String) parent.getItemAtPosition(position);
+                    item = (String) parent.getItemAtPosition(position);
 
                     Log.d("DEBUG: onItemSelected :airport", item);
+                    Intent selectedAirPort = new Intent(MainActivity.this, AirportHandler.class);
+                    selectedAirPort.putExtra("selected", item);
 
                     //Calls the async subclass FetchAirData to get the airport item details
                     new FetchAirData().execute(item);
@@ -97,10 +127,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
         MenuItem shareItem = menu.findItem(R.id.action_share);
         provider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-
         if (provider == null)
 
             //DEBUG
@@ -122,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_share) {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, "Here is the airport");
+            intent.putExtra(Intent.EXTRA_TEXT, "Hi there");
             if (provider != null) {
                 provider.setShareIntent(intent);
             } else
@@ -164,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 //DEBUG
                 Log.d("DEBUG: airportDetails", airportDetails);
 
-            //Catch error exceptions
+                //Catch error exceptions
             } catch (Exception e) {
                 //DEBUG
                 Log.e("MainActivity", "Error" + e.getMessage());
@@ -182,11 +210,35 @@ public class MainActivity extends AppCompatActivity {
         private String getStringFromBuffer(BufferedReader bufferedReader) throws Exception {
             StringBuffer stringBuffer = new StringBuffer();
             String string;
+            int userChoice = Integer.parseInt(item);
+            //String buff = bufferedReader.readLine();
+            int k = 0;
+            int index = 0;
+            int startPoint = 0;
+            String[] arrayOfAirports = new String[8];
+
 
             while ((string = bufferedReader.readLine()) != null) {
-                stringBuffer.append(string + '\n');
+                stringBuffer.append(string + ','+'\n');
+                //System.out.println("~~~~~~~~~~~~~~~~"+stringBuffer);
+                for (int i = 0; i <string.length(); i++) {
+                    if (string.charAt(i) == ',') {
+                        k++;
+                        if (k == 7) {
+                            String temp = string.substring(startPoint, i + 1);
+                            System.out.println("+++++++++++++++++++++ " + temp);
+                            arrayOfAirports[index] = temp;
+                            index++;
+                            k = 0;
+                            startPoint = i + 1;
+                        }
+                    }
+                }
 
             }
+
+
+
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
@@ -198,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
             }
             Log.d("DEBUG: airp", stringBuffer.toString());
             //Returns data from the airportHandler
-            return AirportHandler.getAirportsDetails(stringBuffer.toString());
+            return AirportHandler.getAirportsDetails(arrayOfAirports[userChoice]);
         }
 
         @Override
