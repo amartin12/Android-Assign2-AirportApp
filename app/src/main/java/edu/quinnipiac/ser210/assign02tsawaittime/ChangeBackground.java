@@ -7,25 +7,25 @@ import android.view.View;
 
 public class ChangeBackground extends AppCompatActivity {
 
-    View view;
+    View backcolor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_background);
 
-        view = this.getWindow().getDecorView();
-        view.setBackgroundResource(R.color.background);
+        backcolor = this.getWindow().getDecorView();
+        backcolor.setBackgroundResource(R.color.background);
 
     }
 
-    public void setLightBlue(View view){
-        view.setBackgroundResource(R.color.lightBlue);
+    public void setLightBlue(View backcolor){
+        backcolor.setBackgroundResource(R.color.lightBlue);
     }
     public void setLightOrange(View view){
-        view.setBackgroundResource(R.color.lightOrange);
+        backcolor.setBackgroundResource(R.color.lightOrange);
     }
     public void setLightPurple(View view){
-        view.setBackgroundResource(R.color.lightPurple);
+        backcolor.setBackgroundResource(R.color.lightPurple);
     }
 }
