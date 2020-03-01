@@ -39,72 +39,86 @@ public class AirportHandler{
     }
 
 
+
+
     public static String getAirportsDetails(String totalDetails) throws JSONException { //String airportJsonString
-        //puts the airport data into a json object
+    //puts the airport data into a json object
 
 
-      /* JSONArray airPortArrObj = new JSONArray(airportJsonString);
-       JSONObject airDetailObj;
-        String str = "0";
-        switch (str) {
+        //JSONArray airPortArrObj = new JSONArray(totalDetails);
+        JSONObject airDetailObj = new JSONObject(totalDetails);
+        String code = airDetailObj.getString("code");
+        String name = airDetailObj.getString("name");
+        String city = airDetailObj.getString("city");
+        String state = airDetailObj.getString("state");
+        String latitude = airDetailObj.getString("latitude");
+        String longitude = airDetailObj.getString("longitude");
+        String precheck = airDetailObj.getString("precheck");
 
-            case "0":
-                airDetailObj =  airPortArrObj.getJSONObject(0);
-                String code = airDetailObj.getString("code");
+        String details = "Code: "+code+"\nName: "+name+"\nCity: "+city+"\nState: "+state+"\nLatitude: "+latitude+"\nLongitude: "+longitude+"\nPre-check: "+precheck;
+
+/*JSONObject airDetailObj;
+        String str = "0";
+        switch (str) {
+
+            case "0":
+                airDetailObj =  airPortArrObj.getJSONObject(0);
+                String code = airDetailObj.getString("code");
 
 
 
-                Log.d("DEBUG switch","In case 0");
-                Log.d("DEBUG: ",code);
+                Log.d("DEBUG switch","In case 0");
+                Log.d("DEBUG: ",code);
 
-                break;
+                break;
 
-            case "1":
-                airDetailObj = airPortArrObj.getJSONObject(1);
-                Log.d("DEBUG switch","In case 1");
-                break;
+            case "1":
+                airDetailObj = airPortArrObj.getJSONObject(1);
+                Log.d("DEBUG switch","In case 1");
+                break;
 
-            case "2":
-                airDetailObj = airPortArrObj.getJSONObject(2);
+            case "2":
+                airDetailObj = airPortArrObj.getJSONObject(2);
 
-                Log.d("DEGUB switch","In case 2");
-                break;
+                Log.d("DEGUB switch","In case 2");
+                break;
 
-//            case "3":
-//                airDetailObj = airPortArrObj.getJSONObject(3);
+//            case "3":
+//                airDetailObj = airPortArrObj.getJSONObject(3);
 //
-//                break;
+//                break;
 //
-//            case "4":
-//                airDetailObj = airPortArrObj.getJSONObject(4);
+//            case "4":
+//                airDetailObj = airPortArrObj.getJSONObject(4);
 //
-//                break;
+//                break;
 //
-//            case "5":
-//                airDetailObj = airPortArrObj.getJSONObject(5);
+//            case "5":
+//                airDetailObj = airPortArrObj.getJSONObject(5);
 //
-//                break;
+//                break;
 //
-//            case "6":
-//                airDetailObj = airPortArrObj.getJSONObject(6);
+//            case "6":
+//                airDetailObj = airPortArrObj.getJSONObject(6);
 //
-//                break;
+//                break;
 //
-//            case "7":
-//                airDetailObj = airPortArrObj.getJSONObject(7);
+//            case "7":
+//                airDetailObj = airPortArrObj.getJSONObject(7);
 //
-//                break;
-            default:
+//                break;
+            default:
 
-                System.out.println("DEBUG: IN default of switch ");
-                airDetailObj = airPortArrObj.getJSONObject(8);
-
-
-        }*/
-        return totalDetails;
+                System.out.println("DEBUG: IN default of switch ");
+                airDetailObj = airPortArrObj.getJSONObject(8);
 
 
-    }
+        }*/
+        return details;
+
+
+}
+
 }
 
 

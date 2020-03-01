@@ -129,12 +129,23 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem shareItem = menu.findItem(R.id.action_share);
         provider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
+        setShareActionIntent("Look how much longer I have to wait!");
+
+        MenuItem helpItem = menu.findItem(R.id.help);
+        provider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
         if (provider == null)
 
             //DEBUG
             Log.d("DEBUG: MainActivity", "noshare provider");
 
         return true;
+}
+
+    private void setShareActionIntent(String text) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        provider.setShareIntent(intent);
     }
 
     @Override
@@ -144,20 +155,32 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.setting) {  //id == R.id.action_settings
+            Intent intent = new Intent(MainActivity.this, ChangeBackground.class);
+            startActivity(intent);
             return true;
         }
-        if (id == R.id.action_share) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TEXT, "Hi there");
-            if (provider != null) {
-                provider.setShareIntent(intent);
-            } else
-                Toast.makeText(this, "no provider", Toast.LENGTH_LONG).show();
-            return true;
+//        if (id == R.id.action_share) {
+//            Intent intent = new Intent(Intent.ACTION_SEND);
+//            intent.setType("text/plain");
+//            intent.putExtra(Intent.EXTRA_TEXT, "Hi there");
+//            if (provider != null) {
+//                provider.setShareIntent(intent);
+//            } else
+//                Toast.makeText(this, "no provider", Toast.LENGTH_LONG).show();
+//            return true;
+//        }
+       // return false;
+
+        switch (item.getItemId()) {
+            case R.id.help:
+                Intent intent = new Intent(this, Help.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return false;
+
     }
 
     //ASYNC SUBCLASS: Private class to do background work on the app fetching the data from the api to display

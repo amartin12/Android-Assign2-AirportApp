@@ -2,12 +2,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.quinnipiac.ser210.assign02tsawaittime.MainActivity">
+<!--    <item-->
+<!--        android:id="@+id/action_settings"-->
+<!--        android:orderInCategory="100"-->
+<!--        android:title="@string/action_settings"-->
+<!--        app:showAsAction="never"-->
+<!--        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider">-->
+
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never"
-        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider" />
+        android:id="@+id/setting"
+        android:title="Settings"
+        app:showAsAction="never">
+
+        <menu>
+
+            <item
+                android:id="@+id/background"
+                android:title="Change Background Color" />
+
+
+        </menu>
+
+    </item>
 
     <item android:id="@+id/action_share"
         android:title="@string/action_share"
@@ -15,11 +32,10 @@
         app:showAsAction="ifRoom"
         app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"/>
 
-    <item android:id="@+id/action_search"
-        android:title="Search"
-        android:icon="@drawable/ic_search_action"
+    <item android:id="@+id/help"
+        android:title="@string/help"
+        android:icon="@drawable/help_button"
         app:showAsAction="ifRoom|collapseActionView">
-
     </item>
 
 
