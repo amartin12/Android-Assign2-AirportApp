@@ -18,8 +18,7 @@ public class ChangeBackground extends AppCompatActivity {
         backcolor.setBackgroundResource(R.color.background);
 
     }
-
-    public void setLightBlue(View backcolor){
+    public void setLightBlue(View view){
         backcolor.setBackgroundResource(R.color.lightBlue);
     }
     public void setLightOrange(View view){
