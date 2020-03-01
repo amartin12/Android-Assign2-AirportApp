@@ -67,9 +67,7 @@ public class MainActivity extends AppCompatActivity {
     ShareActionProvider provider;
     boolean userPick = false;
     String item = "";
-
-
-    private String url01 = "https://tsa-wait-times.p.rapidapi.com/airports/test?APIKEY=test"; //     "https://tsa-wait-times.p.rapidapi.com/";   //"https://numbersapi.p.rapidapi.com/";
+    private String url01 = "https://tsa-wait-times.p.rapidapi.com/airports/test?APIKEY=test";
     private String url02 =   "test?APIKEY=test";
 
 
@@ -140,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
 }
-
+    //Methods to setAction Intents
     private void setShareActionIntent(String text) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
@@ -160,18 +158,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
-//        if (id == R.id.action_share) {
-//            Intent intent = new Intent(Intent.ACTION_SEND);
-//            intent.setType("text/plain");
-//            intent.putExtra(Intent.EXTRA_TEXT, "Hi there");
-//            if (provider != null) {
-//                provider.setShareIntent(intent);
-//            } else
-//                Toast.makeText(this, "no provider", Toast.LENGTH_LONG).show();
-//            return true;
-//        }
-       // return false;
-
+        //Switch statement to ge the help activity from Actionbar
         switch (item.getItemId()) {
             case R.id.help:
                 Intent intent = new Intent(this, Help.class);
@@ -243,7 +230,6 @@ public class MainActivity extends AppCompatActivity {
 
             while ((string = bufferedReader.readLine()) != null) {
                 stringBuffer.append(string + ','+'\n');
-                //System.out.println("~~~~~~~~~~~~~~~~"+stringBuffer);
                 for (int i = 0; i <string.length(); i++) {
                     if (string.charAt(i) == ',') {
                         k++;
@@ -259,9 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-
-
-
+            //Checking buffered reader to make sure not null
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
